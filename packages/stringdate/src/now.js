@@ -1,10 +1,7 @@
 // @flow
-import wrap from './core/wrap';
+import {stringifyDate, stringifyDateTime} from './core/date';
 
 export default (time: boolean = true) => {
-    return date
-        ? Date.now().toISOString()
-        : Date.now().toISOString().slice('T')[0]
-    ;
-}
+    return (time ? stringifyDateTime : stringifyDate)(new Date());
+};
 

@@ -1,6 +1,6 @@
 // @flow
-import parseISO from 'date-fns/parseISO';
-import {parseDuration, formatDuration} from './duration';
+import {parseDuration, stringifyDuration} from './duration';
+import {parseDate, stringifyDate, stringifyDateTime} from './date';
 
 export default function wrapFunction<A>(fn: A) {
     return (input: string): string => {
@@ -10,19 +10,19 @@ export default function wrapFunction<A>(fn: A) {
 
         // compute the next value
         let nextValue = fn(
-            isDuration ? parseDuration(input) : parseISO(input),
+            isDuration ? parseDuration(input) : parseDate(input),
             {isDuration, isTime}
         );
 
         // convert durations to string
         if(nextValue._type === 'duration') {
-            return formatDuration(nextValue);
+            return stringifyDuration(nextValue);
         }
 
         // convert dates to string based on exisiting input
         return isTime
-            ? nextValue.toISOString()
-            : nextValue.toISOString().split('T')[0]
+            ? stringifyDateTime(nextValue)
+            : stringifyDate(nextValue)
         ;
     };
 }

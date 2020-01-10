@@ -1,13 +1,11 @@
 // @flow
 module.exports = {
     preset: 'blueflag-test',
-    collectCoverageFrom: [
-        "src/**/*.{js,jsx}",
-        "*.{js,jsx}",
-        "!jest.config.js"
-    ],
+    testEnvironment: 'node',
+    //collectCoverageFrom: [
+        //"src/**/*.{js,js}"
+    //],
     testMatch: ["**/__test__/**/*-test.js?(x)"],
-    testURL: 'http://localhost',
     coverageThreshold: {
         global: {
             statements: 100,

@@ -27,7 +27,7 @@
     "flow-coverage": "blueflag-test flow-coverage",
     "lint": "blueflag-test lint",
     "size": "size-limit",
-    "test": "yarn build && yarn jest --maxWorkers=1",
+    "test": "yarn jest --maxWorkers=1",
     "test-all": "yarn build && yarn jest --maxWorkers=1 && yarn flow && yarn lint && yarn flow-coverage && yarn size",
     "watch": "yarn run build -w"
   },
