@@ -1,0 +1,9 @@
+{
+    "presets": [
+        ["blueflag", {"browser": true, "library": true}]
+    ],
+    "plugins": ["flow-react-proptypes"],
+    "ignore": [
+        "./lib"
+    ]
+}
