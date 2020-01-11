@@ -6,7 +6,7 @@ describe('add', () => {
     it('can add a duration to a date', () => {
         expect(add('P2D')('2012-01-01')).toBe('2012-01-03');
         expect(add('P1W')('2012-01-01')).toBe('2012-01-08');
-        expect(add('PT1H1M')('2012-01-01T00:00:00')).toBe('2011-12-31T14:01:00.000Z"');
+        expect(add('PT1H1M')('2012-01-01T00:00:00Z')).toBe('2012-01-01T01:01:00.000Z');
         expect(add('P1Y2M3D')('2012-01-01')).toBe('2013-03-04');
     });
 
