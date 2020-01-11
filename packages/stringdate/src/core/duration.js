@@ -59,3 +59,10 @@ export function addDuration(aa: Duration, bb: Duration) {
         return rr;
     }, {_type: 'duration'});
 }
+
+export function subtractDuration(aa: Duration, bb: Duration) {
+    return objMap.slice(1).reduce((rr, key) => {
+        rr[key] = Math.max(0, aa[key] - bb[key]);
+        return rr;
+    }, {_type: 'duration'});
+}
