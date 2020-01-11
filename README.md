@@ -22,10 +22,27 @@ yarn add stringdate
 ### format() date / duration
 
 ## Manipulation
-### add() (date|duration) => duration
-### subtract() duration
-### startOf() date
+### add() 
+```
+add = (duration) => (date) => date
+add = (duration) => (duration) => duration
+```
+
+### subtract()
+```
+subtract = (duration) => (date) => date
+subtract = (duration) => (duration) => duration
+```
+
+### startOf()
+```
+startOf = (y|M|d|h|m|s) => (date) => date
+```
+
 ### endOf() date
+```
+endOf = (y|M|d|h|m|s) => (date) => date
+```
 ### isBefore() 
 ### isAfter()
 ### isSame()
