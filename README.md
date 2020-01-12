@@ -44,7 +44,14 @@ startOf = (y|M|d|h|m|s) => (date) => date
 endOf = (y|M|d|h|m|s) => (date) => date
 ```
 ### isBefore() 
+```
+isBefore = (dateString) => (dateString) => boolean
+```
 ### isAfter()
+
+```
+isAfter = (dateString) => (dateString) => boolean
+```
 ### isSame()
 ### isBetween()
 ### min()
