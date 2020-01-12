@@ -1,4 +1,5 @@
 // @flow
+export type DatePart = 'year' | 'month' | 'day' | 'week' | 'hour' | 'minute' | 'second';
 
 export function parseDate(input: string): Date {
     const isTime = input.indexOf('T') !== -1;
