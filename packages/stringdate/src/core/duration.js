@@ -4,7 +4,6 @@ const weekPattern = `(${numbers}W)`;
 const datePattern = `(${numbers}Y)?(${numbers}M)?(${numbers}D)?`;
 const timePattern = `T(${numbers}H)?(${numbers}M)?(${numbers}S)?`;
 const iso8601 = `P(?:${weekPattern}|${datePattern}(?:${timePattern})?)`;
-const objMap = ['weeks', 'years', 'months', 'days', 'hours', 'minutes', 'seconds'];
 const pattern = new RegExp(iso8601);
 
 export type Duration = {
@@ -17,18 +16,20 @@ export type Duration = {
     seconds: number
 };
 
+export const durationKeys = ['years', 'months', 'days', 'hours', 'minutes', 'seconds'];
+
 export function parseDuration(durationString: string): Duration {
     let duration = durationString
         .match(pattern)
         .slice(1)
         .reduce((prev, next, idx) => {
-            prev[objMap[idx]] = parseFloat(next) || 0;
+            prev[['weeks'].concat(durationKeys)[idx]] = parseFloat(next) || 0;
             return prev;
         }, {_type: 'duration'})
     ;
 
     // ignore weeks as a duration
-    duration.days = duration.days + ((duration.weeks || 0) * 7)
+    duration.days = duration.days + ((duration.weeks || 0) * 7);
     delete duration.weeks;
     return duration;
 }
@@ -54,14 +55,14 @@ export function isDuration(input) {
 }
 
 export function addDuration(aa: Duration, bb: Duration) {
-    return objMap.slice(1).reduce((rr, key) => {
+    return durationKeys.reduce((rr, key) => {
         rr[key] = aa[key] + bb[key];
         return rr;
     }, {_type: 'duration'});
 }
 
 export function subtractDuration(aa: Duration, bb: Duration) {
-    return objMap.slice(1).reduce((rr, key) => {
+    return durationKeys.reduce((rr, key) => {
         rr[key] = Math.max(0, aa[key] - bb[key]);
         return rr;
     }, {_type: 'duration'});

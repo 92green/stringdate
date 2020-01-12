@@ -1,6 +1,6 @@
 [
     {
-        "limit": "100 B",
-        "path": "lib/FloatyBox.js"
+        "limit": "5KB",
+        "path": "lib/index.js"
     }
 ]

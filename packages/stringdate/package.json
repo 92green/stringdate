@@ -32,8 +32,7 @@
     "watch": "yarn run build -w"
   },
   "dependencies": {
-    "@babel/runtime": "^7.1.5",
-    "date-fns": "^2.9.0"
+    "@babel/runtime": "^7.1.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
