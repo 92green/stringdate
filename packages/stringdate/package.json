@@ -32,7 +32,8 @@
     "watch": "yarn run build -w"
   },
   "dependencies": {
-    "@babel/runtime": "^7.1.5"
+    "@babel/runtime": "^7.1.5",
+    "invariant": "^2.2.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",

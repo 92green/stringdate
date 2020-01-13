@@ -5,13 +5,18 @@ import {parseDate, stringifyDate, stringifyDateTime} from './date';
 export default function wrapFunction<A>(fn: A) {
     return (input: string): string => {
         const isDuration = input.indexOf('P') !== -1;
-        const {date, ...flags} = parseDate(input);
+        let flags;
+        let nextValue;
 
-        // compute the next value
-        let nextValue = fn(
-            isDuration ? parseDuration(input) : date,
-            {isDuration, ...flags}
-        );
+        if(isDuration) {
+            flags = {isDuration};
+            nextValue = fn(parseDuration(input), flags);
+        } else {
+            const parsed = parseDate(input);
+            flags = {isDuration, ...parsed};
+            nextValue = fn(parsed.date, flags);
+        }
+
 
         // convert durations to string
         if(nextValue._type === 'duration') {
@@ -20,8 +25,8 @@ export default function wrapFunction<A>(fn: A) {
 
         // convert dates to string based on exisiting input
         return flags.isTime
-            ? stringifyDateTime(nextValue, flags.offset)
-            : stringifyDate(nextValue, flags.offset)
+            ? stringifyDateTime(nextValue)
+            : stringifyDate(nextValue)
         ;
     };
 }
