@@ -10,5 +10,5 @@ export default (compare: string)  => wrap((value: Date) => {
             ? compareDuration
             : value
     }
-    return new Date(Math.min(value, parseDate(compare).date));
+    return new Date(Math.min(value, parseDate(compare)));
 });

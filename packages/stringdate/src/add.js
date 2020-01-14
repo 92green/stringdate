@@ -15,27 +15,27 @@ export default (params: Duration)  => wrap((value: Date|Duration, {isDuration}) 
 
         switch (key) {
             case 'years':
-                value.setUTCFullYear(value.getUTCFullYear() + amount);
+                value.setFullYear(value.getFullYear() + amount);
                 break;
 
             case 'months':
-                value.setUTCMonth(value.getUTCMonth() + amount);
+                value.setMonth(value.getMonth() + amount);
                 break;
 
             case 'days':
-                value.setUTCDate(value.getUTCDate() + amount);
+                value.setDate(value.getDate() + amount);
                 break;
 
             case 'hours':
-                value.setUTCHours(value.getUTCHours() + amount);
+                value.setHours(value.getHours() + amount);
                 break;
 
             case 'minutes':
-                value.setUTCMinutes(value.getUTCMinutes() + amount);
+                value.setMinutes(value.getMinutes() + amount);
                 break;
 
             case 'seconds':
-                value.setUTCSeconds(value.getUTCSeconds() + amount);
+                value.setSeconds(value.getSeconds() + amount);
                 break;
         }
     });

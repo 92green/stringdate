@@ -4,27 +4,27 @@ import type {DatePart} from './core/date';
 
 
 export default (compare: string, compareType?: DatePart)  => (value: string) => {
-    const cc = parseDate(compare).date;
-    const vv = parseDate(value).date;
+    const cc = parseDate(compare);
+    const vv = parseDate(value);
 
     switch (compareType) {
         case 'year':
-            return cc.getUTCFullYear() === vv.getUTCFullYear();
+            return cc.getFullYear() === vv.getFullYear();
 
         case 'month':
-            return cc.getUTCMonth() === vv.getUTCMonth();
+            return cc.getMonth() === vv.getMonth();
 
         case 'day':
-            return cc.getUTCDay() === vv.getUTCDay();
+            return cc.getDay() === vv.getDay();
 
         case 'hour':
-            return cc.getUTCHours() === vv.getUTCHours();
+            return cc.getHours() === vv.getHours();
 
         case 'minute':
-            return cc.getUTCMinutes() === vv.getUTCMinutes();
+            return cc.getMinutes() === vv.getMinutes();
 
         case 'second':
-            return cc.getUTCSeconds() === vv.getUTCSeconds();
+            return cc.getSeconds() === vv.getSeconds();
 
         default:
             return cc.getTime() === vv.getTime();

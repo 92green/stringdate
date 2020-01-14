@@ -4,29 +4,29 @@ import wrap from './core/wrap';
 export default (type: string)  => wrap((date: Date) => {
     switch (type) {
         case 'year':
-            date.setUTCMonth(11, 31);
-            date.setUTCHours(23, 59, 59, 999);
+            date.setMonth(11, 31);
+            date.setHours(23, 59, 59, 999);
             return date;
 
         case 'month':
-            date.setUTCMonth(date.getUTCMonth() + 1, 0); // next month - 1 day
-            date.setUTCHours(23, 59, 59, 999);
+            date.setMonth(date.getMonth() + 1, 0); // next month - 1 day
+            date.setHours(23, 59, 59, 999);
             return date;
 
         case 'day':
-            date.setUTCHours(23, 59, 59, 999);
+            date.setHours(23, 59, 59, 999);
             return date;
 
         case 'hour':
-            date.setUTCMinutes(59, 59, 999);
+            date.setMinutes(59, 59, 999);
             return date;
 
         case 'minute':
-            date.setUTCSeconds(59, 999);
+            date.setSeconds(59, 999);
             return date;
 
         case 'second':
-            date.setUTCMilliseconds(999);
+            date.setMilliseconds(999);
             return date;
 
         default:
