@@ -67,3 +67,18 @@ export function subtractDuration(aa: Duration, bb: Duration) {
         return rr;
     }, {_type: 'duration'});
 }
+
+// Warning this is not a real number. It assumes 30 days in a month
+// P31D > P1M
+// It's just used to compare relative duration size
+export function normalizeDurationToSeconds(aa: Duration) {
+    return durationKeys.reduce((rr, key) => {
+        const value = aa[key];
+        if(key === 'years') return rr + value * 31557600; // 365.25
+        if(key === 'months') return rr + value * 2678400; // assume 30 days
+        if(key === 'days') return rr + value * 86400;
+        if(key === 'hours') return rr + value * 3600;
+        if(key === 'minutes') return rr + value * 60;
+        if(key === 'seconds') return rr + value;
+    }, 0);
+}

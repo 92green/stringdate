@@ -24,24 +24,24 @@ yarn add stringdate
 ## Manipulation
 ### add() 
 ```
-add = (duration) => (date) => date
+add = (duration) => (dateString) => dateString
 add = (duration) => (duration) => duration
 ```
 
 ### subtract()
 ```
-subtract = (duration) => (date) => date
+subtract = (duration) => (dateString) => dateString
 subtract = (duration) => (duration) => duration
 ```
 
 ### startOf()
 ```
-startOf = (y|M|d|h|m|s) => (date) => date
+startOf = (datePartType) => (dateString) => dateString
 ```
 
 ### endOf() date
 ```
-endOf = (y|M|d|h|m|s) => (date) => date
+endOf = (datePartType) => (dateString) => dateString
 ```
 ### isBefore() 
 ```
@@ -50,10 +50,17 @@ isBefore = (dateString) => (dateString) => boolean
 ### isAfter()
 
 ```
-isAfter = (dateString) => (dateString) => boolean
+isAfter = (compare: dateString) => (value: dateString) => boolean
 ```
 ### isSame()
+```
+isSame = (compare: dateString, part: datePartType) => (value: dateString) => boolean
+```
 ### isBetween()
+```
+isBetween = (start: dateString, end: dateString) => (value: dateString) => boolean
+```
+
 ### min()
 ### max()
 ### now()
