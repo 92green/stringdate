@@ -15,7 +15,7 @@ Do you find that most of the time dates and times are strings? You receive them 
 yarn add stringdate
 ```
 
-```
+```js
 import {add, format} from 'stringdate';
 import {pipeWith} from 'unfunctional';
 
