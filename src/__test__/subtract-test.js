@@ -11,6 +11,6 @@ describe('subtract', () => {
 
     it('can subtract a duration to a duration', () => {
         expect(subtract('P2D')('P3D')).toBe('P1D');
-        expect(subtract('P3D')('P1Y2M3DT1M')).toBe('P1Y2MT1M');
+        expect(subtract('P3D')('P1Y2M3D')).toBe('P1Y2M');
     });
 });

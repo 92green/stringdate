@@ -13,15 +13,6 @@ describe('add', () => {
         // day
         ['P3D', '2020-01-01', '2020-01-04'],
 
-        // hour
-        ['P3H', '2020-01-01', '2020-01-01'],
-
-        // minute
-        ['PT3M', '2020-01-01', '2020-01-01'],
-
-        // second
-        ['PT3S', '2020-01-01', '2020-01-01'],
-
         // week
         ['P3W', '2020-01-01', '2020-01-22'],
 
@@ -32,10 +23,7 @@ describe('add', () => {
         ['P1Y', 'P2Y', 'P3Y'],
         ['P1M', 'P2M', 'P3M'],
         ['P1D', 'P2D', 'P3D'],
-        ['PT1H', 'PT2H', 'PT3H'],
-        ['PT1M', 'PT2M', 'PT3M'],
-        ['PT1S', 'PT2S', 'PT3S'],
-        ['P1Y2M3DT1H1M2S', 'P1Y2M3DT1H1M2S', 'P2Y4M6DT2H2M4S']
+        ['P1Y2M3D', 'P1Y2M3D', 'P2Y4M6D']
     ])('add(%p)(%p) === %p', (params, input, expected) => {
         expect(add(params)(input)).toBe(expected);
     });
