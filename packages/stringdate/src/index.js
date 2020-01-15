@@ -1,9 +1,8 @@
 // @flow
 export {default as add} from './add';
-//export {default as difference} from './difference';
+export {default as difference} from './difference';
 export {default as endOf} from './endOf';
-//export {default as format} from './format';
-//export {default as formatDistance} from './formatDistance';
+export {default as format} from './format';
 export {default as isAfter} from './isAfter';
 export {default as isBefore} from './isBefore';
 export {default as isBetween} from './isBetween';
