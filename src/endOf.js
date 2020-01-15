@@ -12,24 +12,5 @@ export default (type: string)  => wrap((date: Date) => {
             date.setMonth(date.getMonth() + 1, 0); // next month - 1 day
             date.setHours(23, 59, 59, 999);
             return date;
-
-        case 'day':
-            date.setHours(23, 59, 59, 999);
-            return date;
-
-        case 'hour':
-            date.setMinutes(59, 59, 999);
-            return date;
-
-        case 'minute':
-            date.setSeconds(59, 999);
-            return date;
-
-        case 'second':
-            date.setMilliseconds(999);
-            return date;
-
-        default:
-            return date;
     }
 });

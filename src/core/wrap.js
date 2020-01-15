@@ -1,5 +1,5 @@
 // @flow
-import {parseDuration, stringifyDuration} from './duration';
+import {isDuration as isDurationType, parseDuration, stringifyDuration} from './duration';
 import {parseDate, stringifyDate} from './date';
 
 export default function wrapFunction<A>(fn: A) {
@@ -10,7 +10,7 @@ export default function wrapFunction<A>(fn: A) {
             {isDuration}
         );
 
-        return nextValue._type === 'duration'
+        return isDurationType(nextValue)
             ? stringifyDuration(nextValue)
             : stringifyDate(nextValue);
     };

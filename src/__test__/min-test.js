@@ -10,8 +10,9 @@ describe('min', () => {
         ['2020-01-08', '2020-01-10', '2020-01-08'],
         // durations
         ['P1Y', 'P1D', 'P1D'],
+        ['P1D', 'P1Y', 'P1D'],
         ['P9D', 'P1W', 'P7D'],
-        ['P1Y1D', 'P12M', 'P1Y1D']
+        ['P1Y1D', 'P12M', 'P12M']
 
     ])('min(%p)(%p)', (compare, value, expected) => {
         expect(min(compare)(value)).toBe(expected);

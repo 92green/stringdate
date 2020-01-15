@@ -5,12 +5,14 @@ const datePattern = `(${numbers}Y)?(${numbers}M)?(${numbers}D)?`;
 const iso8601 = `P(?:${weekPattern}|${datePattern})`;
 const pattern = new RegExp(iso8601);
 
-export type Duration = {
-    _type: 'duration',
-    years: number,
-    months: number,
-    days: number
-};
+
+export default class Duration {
+    constructor(years = 0, months = 0, days = 0) {
+        this.years = years;
+        this.months = months;
+        this.days = days;
+    }
+}
 
 export const durationKeys = ['years', 'months', 'days'];
 
@@ -22,7 +24,7 @@ export function parseDuration(durationString: string): Duration {
 
             prev[['weeks'].concat(durationKeys)[idx]] = parseFloat(next) || 0;
             return prev;
-        }, {_type: 'duration'})
+        }, new Duration())
     ;
 
 
@@ -45,21 +47,21 @@ export function stringifyDuration(duration: Duration): string {
 }
 
 export function isDuration(input) {
-    return input._type === 'duration';
+    return input instanceof Duration;
 }
 
 export function addDuration(aa: Duration, bb: Duration) {
     return durationKeys.reduce((rr, key) => {
         rr[key] = aa[key] + bb[key];
         return rr;
-    }, {_type: 'duration'});
+    }, new Duration());
 }
 
 export function subtractDuration(aa: Duration, bb: Duration) {
     return durationKeys.reduce((rr, key) => {
         rr[key] = Math.max(0, aa[key] - bb[key]);
         return rr;
-    }, {_type: 'duration'});
+    }, new Duration());
 }
 
 // Warning this is not a real number. It assumes 30 days in a month
@@ -68,13 +70,14 @@ export function subtractDuration(aa: Duration, bb: Duration) {
 export function normalizeDurationToSeconds(aa: Duration) {
     return durationKeys.reduce((rr, key) => {
         const value = aa[key];
-        if(key === 'years') return rr + value * 31557600; // 365.25
-        if(key === 'months') return rr + value * 2678400; // assume 30 days
-        if(key === 'days') return rr + value * 86400;
+        if(key === 'years' && value > 0) return rr + value * 31557600; // 365.25
+        if(key === 'months' && value > 0) return rr + value * 2592000; // assume 30 days
+        if(key === 'days' && value > 0) return rr + value * 86400;
+        return rr;
     }, 0);
 }
 
 export function millisecondsToDuration(milliseconds: Duration) {
-    return {_type: 'duration', days: milliseconds / 1000 / 60 / 60 / 24};
+    return new Duration(0, 0, milliseconds / 1000 / 60 / 60 / 24);
 }
 

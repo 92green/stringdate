@@ -23,18 +23,6 @@ export default (params: Duration)  => wrap((value: Date|Duration, {isDuration}) 
             case 'days':
                 value.setDate(value.getDate() - amount);
                 break;
-
-            case 'hours':
-                value.setHours(value.getHours() - amount);
-                break;
-
-            case 'minutes':
-                value.setMinutes(value.getMinutes() - amount);
-                break;
-
-            case 'seconds':
-                value.setSeconds(value.getSeconds() - amount);
-                break;
         }
     });
 

@@ -1,14 +1,14 @@
 // @flow
 import wrap from './core/wrap';
 import {parseDate} from './core/date';
-import {normalizeDurationToSeconds, parseDuration} from './core/duration';
+import {isDuration, normalizeDurationToSeconds, parseDuration} from './core/duration';
 
 export default (compare: string)  => wrap((value: Date) => {
-    if(value._type === 'duration') {
+    if(isDuration(value)) {
         const compareDuration = parseDuration(compare);
         return normalizeDurationToSeconds(compareDuration) < normalizeDurationToSeconds(value)
             ? compareDuration
-            : value
+            : value;
     }
     return new Date(Math.min(value, parseDate(compare)));
 });

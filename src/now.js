@@ -1,6 +1,7 @@
 // @flow
+import {stringifyDate} from './core/date';
 
 export default () => {
-    return new Date();
+    return stringifyDate(new Date());
 };
 
