@@ -1,16 +1,46 @@
 {
-  "private": true,
+  "name": "stringdate",
+  "version": "0.1.2",
+  "description": "A no fuss string date library",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "author": "Allan Hortle",
+  "keywords": [
+    "string",
+    "date"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/92green/stringdate.git"
+  },
+  "files": [
+    "lib"
+  ],
+  "bugs": {
+    "url": "https://github.com/92green/stringdate/issues"
+  },
+  "private": false,
   "scripts": {
-    "prep": "yarn && yarn lerna bootstrap",
-    "build": "yarn lerna run build",
-    "bump": "yarn lerna publish -m \"build: add tags\"",
-    "preversion": "yarn build",
-    "reinstall": "rm -rf node_modules && yarn prep",
-    "test-all": "yarn lerna run test-all",
-    "watch": "yarn lerna run watch --parallel",
-    "deploy": "yarn lerna run deploy"
+    "build": "rm -rf lib && NODE_ENV=production babel src --out-dir lib --ignore '**/__test__/*.js' --ignore '**/__mocks__/*.js'",
+    "build-all": "yarn build",
+    "flow": "blueflag-test flow",
+    "flow-coverage": "blueflag-test flow-coverage",
+    "lint": "blueflag-test lint",
+    "size": "size-limit",
+    "test": "yarn jest --maxWorkers=1",
+    "test-all": "yarn build && yarn jest --maxWorkers=1 && yarn flow && yarn lint && yarn flow-coverage && yarn size",
+    "watch": "yarn run build -w"
   },
   "dependencies": {
-    "lerna": "^3.10.7"
+    "@babel/runtime": "^7.1.5",
+    "date-fns": "^2.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "babel-plugin-flow-react-proptypes": "^25.1.0",
+    "babel-preset-blueflag": "^1.0.0",
+    "blueflag-test": "^0.22.0",
+    "size-limit": "1.0.1"
   }
 }
