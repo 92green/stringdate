@@ -38,9 +38,12 @@
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
-    "babel-plugin-flow-react-proptypes": "^25.1.0",
+    "@size-limit/preset-small-lib": "^3.0.0",
     "babel-preset-blueflag": "^1.0.0",
-    "blueflag-test": "^0.22.0",
-    "size-limit": "1.0.1"
-  }
+    "blueflag-test": "^0.22.0"
+  },
+  "size-limit": [{
+    "limit": "6.79KB",
+    "path": "lib/index.js"
+  }]
 }
