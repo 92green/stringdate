@@ -1,6 +1,6 @@
 {
   "name": "stringdate",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A no fuss string date library",
   "main": "lib/index.js",
   "license": "MIT",
@@ -42,8 +42,10 @@
     "babel-preset-blueflag": "^1.0.0",
     "blueflag-test": "^0.22.0"
   },
-  "size-limit": [{
-    "limit": "6.79KB",
-    "path": "lib/index.js"
-  }]
+  "size-limit": [
+    {
+      "limit": "6.79KB",
+      "path": "lib/index.js"
+    }
+  ]
 }
