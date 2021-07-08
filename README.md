@@ -15,7 +15,7 @@ Do you find that most of the time dates and times are strings? You receive them 
 yarn add stringdate
 ```
 
-```js
+```
 import {add, format} from 'stringdate';
 import {pipeWith} from 'unfunctional';
 
@@ -140,12 +140,11 @@ isAfter('2020-12-25')('2020-12-01') === false;
 ### isSame()
 Check if a date or date part is the same
 ```js
-// isSame = (compare: dateString, part?: datePartType) => (value: dateString) => boolean
+// isSame = (compare: dateString, part: datePartType) => (value: dateString) => boolean
 
-const sameYear = isSame('2020-01-01', 'year')('2020-11-11') === true;
-const sameMonth = isSame('2020-01-01', 'month')('2019-01-11') === true;
-const sameDay = isSame('2020-01-01', 'day')('2019-06-01') === true;
-const sameDate = isSame('2020-01-01', 'day')('2020-01-01') === true;
+const sameYear = isSame('year', '2020-01-01')('2020-11-11') === true;
+const sameMonth = isSame('month', '2020-01-01')('2020-01-11') === true;
+const sameDate = isSame('day', '2020-01-01')('2020-01-01') === true;
 ```
 
 ### isBetween()

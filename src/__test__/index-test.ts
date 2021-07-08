@@ -1,7 +1,7 @@
 import * as stringdate from '../index';
 
 describe('index', () => {
-    test.each([
+    test.each<[keyof typeof stringdate]>([
         ['add'],
         ['difference'],
         ['endOf'],

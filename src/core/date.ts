@@ -1,8 +1,10 @@
 export type DatePart = 'year' | 'month' | 'day' | 'week' | 'hour' | 'minute' | 'second';
 
-const pad = (input) => String(input).padStart(2, '0');
+function pad(input: number) {
+    return String(input).padStart(2, '0');
+}
 
-export function parseDate(input: string): Date {
+export function parseDate(input: string | Date): Date {
     return new Date(input);
 }
 

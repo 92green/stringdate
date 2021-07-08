@@ -5,6 +5,10 @@ const iso8601 = `P(?:${weekPattern}|${datePattern})`;
 const pattern = new RegExp(iso8601);
 
 export default class Duration {
+    years: number;
+    months: number;
+    days: number;
+    weeks?: number;
     constructor(years = 0, months = 0, days = 0) {
         this.years = years;
         this.months = months;
@@ -12,16 +16,16 @@ export default class Duration {
     }
 }
 
-export const durationKeys = ['years', 'months', 'days'];
+export const durationKeys = ['years', 'months', 'days'] as const;
+const durationKeysWeeks = ['weeks', ...durationKeys] as const;
 
 export function parseDuration(durationString: string): Duration {
-    let duration = durationString
-        .match(pattern)
-        .slice(1)
-        .reduce((prev, next, idx) => {
-            prev[['weeks'].concat(durationKeys)[idx]] = parseFloat(next) || 0;
-            return prev;
-        }, new Duration());
+    const match = durationString.match(pattern);
+    if (!match) throw new Error('duration string was unable to be parsed');
+    const duration = match.slice(1).reduce((prev, next, idx) => {
+        prev[durationKeysWeeks[idx]] = parseFloat(next) || 0;
+        return prev;
+    }, new Duration());
 
     // ignore weeks as a duration
     duration.days = duration.days + (duration.weeks || 0) * 7;
@@ -40,7 +44,7 @@ export function stringifyDuration(duration: Duration): string {
     return formatString;
 }
 
-export function isDuration(input) {
+export function isDuration(input: unknown): boolean {
     return input instanceof Duration;
 }
 
@@ -71,6 +75,6 @@ export function normalizeDurationToSeconds(aa: Duration) {
     }, 0);
 }
 
-export function millisecondsToDuration(milliseconds: Duration) {
+export function millisecondsToDuration(milliseconds: number) {
     return new Duration(0, 0, milliseconds / 1000 / 60 / 60 / 24);
 }

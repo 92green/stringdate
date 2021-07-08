@@ -1,10 +1,10 @@
 import wrap from './core/wrap';
-import {durationKeys, parseDuration, subtractDuration} from './core/duration';
+import Duration, {durationKeys, parseDuration, subtractDuration} from './core/duration';
 
-export default (params: Duration) =>
-    wrap((value: Date | Duration, {isDuration}) => {
+export default (params: string) =>
+    wrap((value: Date | Duration) => {
         const duration = parseDuration(params);
-        if (isDuration) return subtractDuration(value, duration);
+        if (value instanceof Duration) return subtractDuration(value, duration);
 
         durationKeys.forEach((key) => {
             const amount = duration[key];
