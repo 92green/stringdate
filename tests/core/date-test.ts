@@ -1,4 +1,4 @@
-import {parseDate, stringifyDate} from '../date';
+import {parseDate, stringifyDate} from '../../src/core/date';
 
 describe('date', () => {
     it('can parse date strings', () => {

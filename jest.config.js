@@ -3,7 +3,7 @@ module.exports = {
     //collectCoverageFrom: [
     //"src/**/*.{js,js}"
     //],
-    testMatch: ['**/__test__/**/*-test.ts'],
+    testMatch: ['<rootDir>/tests/**/*-test.ts'],
     coverageThreshold: {
         global: {
             statements: 100,

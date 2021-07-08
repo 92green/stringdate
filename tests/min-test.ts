@@ -1,4 +1,4 @@
-import min from '../min';
+import min from '../src/min';
 
 describe('min', () => {
     test.each([

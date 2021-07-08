@@ -1,5 +1,5 @@
-import difference from '../difference';
-import add from '../add';
+import difference from '../src/difference';
+import add from '../src/add';
 
 describe('difference', () => {
     test.each([

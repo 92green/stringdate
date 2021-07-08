@@ -1,4 +1,4 @@
-import isBefore from '../isBefore';
+import isBefore from '../src/isBefore';
 
 describe('isBefore', () => {
     test.each([

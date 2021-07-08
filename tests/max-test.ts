@@ -1,4 +1,4 @@
-import max from '../max';
+import max from '../src/max';
 
 describe('max', () => {
     test.each([

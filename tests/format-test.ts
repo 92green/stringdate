@@ -1,4 +1,4 @@
-import format from '../format';
+import format from '../src/format';
 
 describe('format', () => {
     test.each([

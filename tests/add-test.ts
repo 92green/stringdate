@@ -1,4 +1,4 @@
-import add from '../add';
+import add from '../src/add';
 
 describe('add', () => {
     test.each([

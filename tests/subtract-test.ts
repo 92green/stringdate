@@ -1,4 +1,4 @@
-import subtract from '../subtract';
+import subtract from '../src/subtract';
 
 describe('subtract', () => {
     it('can subtract a duration to a date', () => {

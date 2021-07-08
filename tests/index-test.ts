@@ -1,4 +1,4 @@
-import * as stringdate from '../index';
+import * as stringdate from '../src/index';
 
 describe('index', () => {
     test.each<[keyof typeof stringdate]>([

@@ -1,5 +1,5 @@
-import isSame from '../isSame';
-import {DatePart} from '../core/date';
+import isSame from '../src/isSame';
+import {DatePart} from '../src/core/date';
 
 describe('isSame', () => {
     test.each<[DatePart, string, string, boolean]>([

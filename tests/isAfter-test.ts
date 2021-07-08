@@ -1,4 +1,4 @@
-import isAfter from '../isAfter';
+import isAfter from '../src/isAfter';
 
 describe('isAfter', () => {
     test.each([

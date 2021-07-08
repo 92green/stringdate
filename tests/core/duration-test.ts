@@ -6,7 +6,7 @@ import Duration, {
     isDuration,
     normalizeDurationToSeconds,
     millisecondsToDuration
-} from '../duration';
+} from '../../src/core/duration';
 
 const oneTwoThree = new Duration(1, 2, 3);
 

@@ -1,5 +1,5 @@
-import endOf from '../endOf';
-import {DatePart} from '../core/date';
+import endOf from '../src/endOf';
+import {DatePart} from '../src/core/date';
 
 describe('endOf', () => {
     test.each<[DatePart, string, string]>([

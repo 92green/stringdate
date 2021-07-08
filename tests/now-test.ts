@@ -1,5 +1,5 @@
-import now from '../now';
-import {stringifyDate} from '../core/date';
+import now from '../src/now';
+import {stringifyDate} from '../src/core/date';
 
 describe('now', () => {
     it('returns today', () => {
