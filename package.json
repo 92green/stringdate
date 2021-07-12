@@ -2,7 +2,7 @@
   "name": "stringdate",
   "version": "0.3.1",
   "description": "A no fuss string date library",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "author": "Allan Hortle",
   "keywords": [
