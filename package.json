@@ -1,6 +1,6 @@
 {
   "name": "stringdate",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A no fuss string date library",
   "main": "dist/index.js",
   "license": "MIT",
