@@ -16,7 +16,10 @@ export default (params: string) =>
                     break;
 
                 case 'months':
-                    value.setMonth(value.getMonth() - amount);
+                    const desiredMonth = value.getMonth() - amount;
+                    // dates are 1 indexed so month + 1 and 0 date is the last of month
+                    const endOfMonth = new Date(value.getFullYear(), desiredMonth + 1, 0);
+                    value.setMonth(desiredMonth, Math.min(endOfMonth.getDate(), value.getDate()));
                     break;
 
                 case 'days':
