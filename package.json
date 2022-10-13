@@ -1,8 +1,8 @@
 {
   "name": "stringdate",
-  "version": "0.2.1",
+  "version": "0.3.2",
   "description": "A no fuss string date library",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "author": "Allan Hortle",
   "keywords": [
@@ -14,38 +14,48 @@
     "url": "git+https://github.com/92green/stringdate.git"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "bugs": {
     "url": "https://github.com/92green/stringdate/issues"
   },
   "private": false,
   "scripts": {
-    "build": "rm -rf lib && NODE_ENV=production babel src --out-dir lib --ignore '**/__test__/*.js' --ignore '**/__mocks__/*.js'",
-    "build-all": "yarn build",
-    "flow": "blueflag-test flow",
-    "flow-coverage": "blueflag-test flow-coverage",
-    "lint": "blueflag-test lint",
+    "build": "yarn tsdx build",
+    "lint": "yarn tsdx lint src",
+    "prepublishOnly": "yarn build",
+    "test": "yarn jest",
+    "test-all": "yarn lint && yarn test && yarn build",
+    "watch": "yarn tsdx watch",
     "size": "size-limit",
-    "test": "yarn jest --maxWorkers=1",
-    "test-all": "yarn build && yarn jest --maxWorkers=1 && yarn flow && yarn lint && yarn flow-coverage && yarn size",
-    "watch": "yarn run build -w"
+    "analyze": "size-limit --why"
   },
   "dependencies": {
-    "@babel/runtime": "^7.1.5",
-    "date-fns": "^2.9.0"
+    "date-fns": "^2.22.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@size-limit/preset-small-lib": "^3.0.0",
-    "babel-preset-blueflag": "^1.0.0",
-    "blueflag-test": "^0.22.0"
+    "@size-limit/preset-small-lib": "^5.0.1",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^16.0.1",
+    "husky": "^7.0.1",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "pretty-quick": "^3.1.1",
+    "size-limit": "^5.0.1",
+    "ts-jest": "^27.0.3",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.2.0",
+    "typescript": "^4.3.2"
   },
   "size-limit": [
     {
       "limit": "6.79KB",
-      "path": "lib/index.js"
+      "path": "dist/index.js"
     }
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format-quick"
+    }
+  }
 }
