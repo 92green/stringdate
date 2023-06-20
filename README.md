@@ -148,13 +148,15 @@ const sameDate = isSame('day', '2020-01-01')('2020-01-01') === true;
 ```
 
 ### isBetween()
-Check if a date is between two dates (inclusive)
+Check if a date is between two dates (exclusive)
 ```js
 // isBetween = (start: dateString, end: dateString) => (value: dateString) => boolean
 
 isBetween('2020-01-01', '2020-12-31')('2020-06-01') === true;
-isBetween('2020-01-01', '2020-12-31')('2020-01-01') === true;
 isBetween('2020-01-01', '2020-12-31')('2020-12-31') === true;
+isBetween('2020-01-01', '2020-12-31')('2020-01-01') === true;
+isBetween('2020-01-01', '2020-12-31')('2020-12-31') === false;
+isBetween('2020-01-01', '2020-12-31')('2022-01-01') === false;
 ```
 
 
